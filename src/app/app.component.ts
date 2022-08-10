@@ -33,7 +33,6 @@ export class AppComponent implements OnInit{
   guardarEmpleado(){
     this.registro=true;
     this.nuevo_empleado = new Empleado(this.nombre,this.apellido,this.cargo,this.salario);
-    this.servicioEmpleados.muestraMensaje("Nombre del empleado: " + this.nuevo_empleado.nombre);
     this.empleadoService.agregarEmpleadoServicio(this.nuevo_empleado);
     this.mensaje="¡Empleado registrado correctamente!";
     console.log(this.empleadoService.empleados);
