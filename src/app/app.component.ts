@@ -10,9 +10,9 @@ import { Empleado } from './empleado.model';
 })
 export class AppComponent {
   
-  title = 'Lista de empleados';
   form_title = "Formulario registro";
   nombre:string="";
+  title = 'Lista de empleados';
   apellido:string="";
   cargo:string="";
   salario:number=0;
