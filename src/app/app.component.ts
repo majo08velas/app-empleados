@@ -2,6 +2,7 @@ import { formatCurrency } from '@angular/common';
 import { DeclarationListEmitMode } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { Empleado } from './empleado.model';
+import { ServicioEmpleadosService } from './services/servicio-empleados.service';
 
 @Component({
   selector: 'app-root',
@@ -17,20 +18,22 @@ export class AppComponent {
   cargo:string="";
   salario:number=0;
   nuevo_empleado!: Empleado;
-
   empleados:Empleado[]=[
     new Empleado("Juan","Salazar","Administrador",1000),
     new Empleado("Simón","López","Aseador",800),
     new Empleado("María","Aranguren","Cajera",900),
     new Empleado("José","Torres","Director",2000),
   ];
-
   registro=false;
   mensaje:string="";
+
+  constructor(private servicioEmpleados:ServicioEmpleadosService){//parqa inyectar un servicio se coloca en el constructor
+  }
 
   guardarEmpleado(){
     this.registro=true;
     this.nuevo_empleado = new Empleado(this.nombre,this.apellido,this.cargo,this.salario);
+    this.servicioEmpleados.muestraMensaje("Nombre del empleado: " + this.nuevo_empleado.nombre);
     this.empleados.push(this.nuevo_empleado);
     this.mensaje="¡Empleado registrado correctamente!";
     console.log(this.empleados);
