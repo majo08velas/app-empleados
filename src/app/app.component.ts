@@ -1,7 +1,8 @@
 import { formatCurrency } from '@angular/common';
 import { DeclarationListEmitMode } from '@angular/compiler';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Empleado } from './empleado.model';
+import { EmpleadosService } from './services/empleados.service';
 import { ServicioEmpleadosService } from './services/servicio-empleados.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ServicioEmpleadosService } from './services/servicio-empleados.service'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   
   form_title = "Formulario registro";
   nombre:string="";
@@ -18,25 +19,24 @@ export class AppComponent {
   cargo:string="";
   salario:number=0;
   nuevo_empleado!: Empleado;
-  empleados:Empleado[]=[
-    new Empleado("Juan","Salazar","Administrador",1000),
-    new Empleado("Simón","López","Aseador",800),
-    new Empleado("María","Aranguren","Cajera",900),
-    new Empleado("José","Torres","Director",2000),
-  ];
   registro=false;
   mensaje:string="";
+  empleados:Empleado[]=[];
 
-  constructor(private servicioEmpleados:ServicioEmpleadosService){//parqa inyectar un servicio se coloca en el constructor
+  constructor(private servicioEmpleados:ServicioEmpleadosService, private empleadoService:EmpleadosService){//parqa inyectar un servicio se coloca en el constructor
+    //this.empleados=this.empleadoService.empleados;//se guarda el array empleados
+  }
+  ngOnInit(): void {
+    this.empleados=this.empleadoService.empleados;
   }
 
   guardarEmpleado(){
     this.registro=true;
     this.nuevo_empleado = new Empleado(this.nombre,this.apellido,this.cargo,this.salario);
     this.servicioEmpleados.muestraMensaje("Nombre del empleado: " + this.nuevo_empleado.nombre);
-    this.empleados.push(this.nuevo_empleado);
+    this.empleadoService.agregarEmpleadoServicio(this.nuevo_empleado);
     this.mensaje="¡Empleado registrado correctamente!";
-    console.log(this.empleados);
+    console.log(this.empleadoService.empleados);
     this.clear();
   }
 

@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { EmpleadoHijoCComponent } from './empleado-hijo-c/empleado-hijo-c.component';
 import { CaracteristicasEmpleadosComponent } from './caracteristicas-empleados/caracteristicas-empleados.component';
 import { ServicioEmpleadosService } from './services/servicio-empleados.service';
+import { EmpleadosService } from './services/empleados.service';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { ServicioEmpleadosService } from './services/servicio-empleados.service'
   imports: [
     BrowserModule, FormsModule
   ],
-  providers: [ServicioEmpleadosService],//se colocan los servicios
+  providers: [ServicioEmpleadosService, EmpleadosService],//se colocan los servicios
   bootstrap: [AppComponent]
 })
 export class AppModule { }
