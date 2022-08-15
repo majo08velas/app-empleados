@@ -1,0 +1,13 @@
+<div style="text-align: center;margin-top: 20px;">
+    <button class="btn btn-info" (click)="volverHome()">Volver</button>
+</div>
+
+<h1>{{form_title}}</h1>
+<form>
+    Nombre: <input type="text" name="nombre" [(ngModel)]="nombre"><br><br>
+    Apellido: <input type="text" name="apellido" [(ngModel)]="apellido"><br><br>
+    Cargo: <input type="text" name="cargo" [(ngModel)]="cargo"><br><br>
+    Salario: <input type="number" name="salario" [(ngModel)]="salario"><br><br>
+    <input class="btn btn-warning" type="submit" value="Registrar" (click)="guardarEmpleado()">
+</form>
+

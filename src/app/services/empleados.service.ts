@@ -13,9 +13,28 @@ export class EmpleadosService{
         new Empleado("Simón","López","Aseador",800),
         new Empleado("María","Aranguren","Cajera",900),
         new Empleado("José","Torres","Director",2000),
-      ];
-      agregarEmpleadoServicio(empleado:Empleado){
-        this.servicioEmpleado.muestraMensaje("Persona a agregar: " + empleado.nombre)
-        this.empleados.push(empleado);
-      }
+    ];
+
+    agregarEmpleadoServicio(empleado:Empleado){
+      this.servicioEmpleado.muestraMensaje("Persona a agregar: " + empleado.nombre)
+      this.empleados.push(empleado);
+    }
+
+    encontrarEmpleado(indice:number){
+      let empleado:Empleado=this.empleados[indice];
+      return empleado;
+    }
+
+    actualizarEmpleado(empleado_actualizado:Empleado,i:number){
+      let empleado_modificado = this.empleados[i];
+      empleado_modificado.nombre = empleado_actualizado.nombre;
+      empleado_modificado.apellido = empleado_actualizado.apellido;
+      empleado_modificado.salario = empleado_actualizado.salario;
+      empleado_modificado.cargo = empleado_actualizado.cargo;
+    }
+
+    eliminarEmpleado(i:number){
+      let empleado_eliminado = this.empleados.splice(i,1);
+      console.log(empleado_eliminado);
+    }
 }
