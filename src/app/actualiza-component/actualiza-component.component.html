@@ -8,6 +8,10 @@
     Apellido: <input type="text" name="apellido" [(ngModel)]="apellido"><br><br>
     Cargo: <input type="text" name="cargo" [(ngModel)]="cargo"><br><br>
     Salario: <input type="number" name="salario" [(ngModel)]="salario"><br><br>
-    <input class="btn btn-warning" type="submit" value="Modificar" (click)="actualizarEmpleado()">
-    <input class="btn btn-danger" type="submit" value="Eliminar" (click)="eliminarEmpleado()">
+    <div *ngIf="actualiza">
+        <input class="btn btn-warning" type="submit" value="Modificar" (click)="actualizarEmpleado()">
+    </div>
+    <div *ngIf="elimina">
+        <input class="btn btn-danger" type="submit" value="Eliminar" (click)="actualizarEmpleado()">
+    </div>
 </form>

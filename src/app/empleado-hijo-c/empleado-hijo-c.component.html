@@ -1,7 +1,9 @@
 <div class="container">
     <div class="row">
         <div>
-            <a [routerLink]="['/actualiza',i]">{{i+1}}.{{empleado.nombre}} {{empleado.apellido}} - {{empleado.cargo}} - {{empleado.salario}}</a> 
+            {{i+1}}.{{empleado.nombre}} {{empleado.apellido}} - {{empleado.cargo}} - {{empleado.salario}}<br>
+            <a [routerLink]="['/actualiza',i ]" [queryParams]="{accion:'1'}">Actualiza</a> <br>
+            <a [routerLink]="['/actualiza',i ]" [queryParams]="{accion:'2'}">Elimina</a> 
         </div>
         <app-caracteristicas-empleados (caracteristicasEmpleados)="agregarCarac($event)"></app-caracteristicas-empleados>
         <ul style="list-style: none ;">
