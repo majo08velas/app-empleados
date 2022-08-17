@@ -13,6 +13,8 @@ import { ContactoComponentComponent } from './contacto-component/contacto-compon
 import { RouterModule, Routes } from '@angular/router';
 import { ActualizaComponentComponent } from './actualiza-component/actualiza-component.component';
 import { ErrorPersonalizadoComponentComponent } from './error-personalizado-component/error-personalizado-component.component';
+import { DataServices } from './services/data.services';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes:Routes=[
   {path:'', component:HomeComponentComponent},
@@ -36,9 +38,9 @@ const appRoutes:Routes=[
     ErrorPersonalizadoComponentComponent
   ],
   imports: [
-    BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)
+    BrowserModule, FormsModule, RouterModule.forRoot(appRoutes), HttpClientModule
   ],
-  providers: [ServicioEmpleadosService, EmpleadosService],//se colocan los servicios
+  providers: [ServicioEmpleadosService, EmpleadosService, DataServices],//se colocan los servicios
   bootstrap: [AppComponent]
 })
 export class AppModule { }

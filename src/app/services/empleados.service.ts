@@ -1,11 +1,12 @@
 import { Injectable } from "@angular/core";
 import { Empleado } from "../empleado.model";
+import { DataServices } from "./data.services";
 import { ServicioEmpleadosService } from "./servicio-empleados.service";
 
 @Injectable()
 //se implenta el codigo de consultas a BD, lectura de records...
 export class EmpleadosService{
-    constructor(private servicioEmpleado:ServicioEmpleadosService){
+    constructor(private servicioEmpleado:ServicioEmpleadosService, private dataService:DataServices){
 
     }
     empleados:Empleado[]=[
@@ -18,6 +19,7 @@ export class EmpleadosService{
     agregarEmpleadoServicio(empleado:Empleado){
       this.servicioEmpleado.muestraMensaje("Persona a agregar: " + empleado.nombre)
       this.empleados.push(empleado);
+      this.dataService.guardarEmpleados(this.empleados);
     }
 
     encontrarEmpleado(indice:number){
