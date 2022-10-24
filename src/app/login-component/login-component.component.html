@@ -1,0 +1,14 @@
+<body>
+    <div class="container" id="form-container">
+      <mat-icon>account_circle</mat-icon>
+        <form class="form-group" #miFormulario="ngForm" (ngSubmit)="login(miFormulario)">
+          <div class="form-group">
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" ngModel>
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ngModel>
+          </div>
+          <button type="submit" class="btn btn-dark">Sign in</button>
+        </form>
+    </div>    
+</body>

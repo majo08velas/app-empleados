@@ -15,6 +15,11 @@ import { ActualizaComponentComponent } from './actualiza-component/actualiza-com
 import { ErrorPersonalizadoComponentComponent } from './error-personalizado-component/error-personalizado-component.component';
 import { DataServices } from './services/data.services';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponentComponent } from './login-component/login-component.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { LoginService } from './services/login.service';
+import { CookieService } from 'ngx-cookie-service';
 
 const appRoutes:Routes=[
   {path:'', component:HomeComponentComponent},
@@ -22,6 +27,7 @@ const appRoutes:Routes=[
   {path:'QS', component:QsComponentComponent},
   {path:'contacto',component:ContactoComponentComponent},
   {path:'actualiza/:id', component:ActualizaComponentComponent},
+  {path:'login', component:LoginComponentComponent},
   {path:'**', component:ErrorPersonalizadoComponentComponent}
 ]
 
@@ -35,12 +41,18 @@ const appRoutes:Routes=[
     QsComponentComponent,
     ContactoComponentComponent,
     ActualizaComponentComponent,
-    ErrorPersonalizadoComponentComponent
+    ErrorPersonalizadoComponentComponent,
+    LoginComponentComponent
   ],
   imports: [
-    BrowserModule, FormsModule, RouterModule.forRoot(appRoutes), HttpClientModule
+    BrowserModule,
+    FormsModule, 
+    RouterModule.forRoot(appRoutes), 
+    HttpClientModule,
+    BrowserAnimationsModule, 
+    MatIconModule
   ],
-  providers: [ServicioEmpleadosService, EmpleadosService, DataServices],//se colocan los servicios
+  providers: [ServicioEmpleadosService, EmpleadosService, DataServices, LoginService, CookieService],//se colocan los servicios
   bootstrap: [AppComponent]
 })
 export class AppModule { }

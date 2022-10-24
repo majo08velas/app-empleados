@@ -18,12 +18,16 @@ export class HomeComponentComponent implements OnInit {
   nuevo_empleado!: Empleado;
   registro=false;
   mensaje:string="";
-  empleados:Empleado[]=[];
+  empleados:Empleado[];
   //parqa inyectar un servicio se coloca en el constructor
   constructor( private empleadoService:EmpleadosService) { }
 
   ngOnInit(): void {
-    this.empleados=this.empleadoService.empleados;
+    this.empleadoService.encontrarEmpleados().subscribe(empleados => {
+        console.log(empleados);
+        this.empleados = Object.values(empleados);//los valores de empleados se van a guardar en el arreglo this.empleados
+        this.empleadoService.setEmpleados(this.empleados);
+    });
   }
 
   guardarEmpleado(){
